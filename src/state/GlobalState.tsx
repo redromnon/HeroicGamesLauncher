@@ -196,16 +196,18 @@ export class GlobalState extends PureComponent<Props> {
       const progress = await ipcRenderer.invoke('requestGameProgress', appName)
       const percent = getProgress(progress)
 
-      if (percent) {
-        const message =
-          percent < 95
-            ? t('notify.install.canceled')
-            : t('notify.install.finished')
+      if (percent > 95) {
+        const message = t('notify.install.finished')
         notify([title, message])
-        this.handleFilter(percent > 95 ? 'installed' : 'all')
+        this.handleFilter('installed')
+        ipcRenderer.send('addShortcut', appName)
         return this.refreshLibrary({})
+      } else {
+        const message = t('notify.install.canceled')
+        notify([title, message])
+        this.handleFilter('all')
+        this.refreshLibrary({})
       }
-      this.refreshLibrary({})
       return notify([title, 'Game Imported'])
     }
 

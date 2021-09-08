@@ -308,16 +308,17 @@ Categories=Game;
     this.state.status = 'installing'
     const { maxWorkers } = (await GlobalConfig.get().getSettings())
     const workers = maxWorkers === 0 ? '' : `--max-workers ${maxWorkers}`
+    const isOriginGame = (await this.getGameInfo()).thirdPartyApp === 'Origin'
+    const installFromThirdParty = isOriginGame ? `--origin` :  ''
 
     const logPath = `"${heroicGamesConfigPath}${this.appName}.log"`
     const writeLog = isWindows ? `2>&1 > ${logPath}` : `|& tee ${logPath}`
-    const command = `${legendaryBin} install ${this.appName} --base-path ${path} ${workers} -y ${writeLog}`
+    const command = `${legendaryBin} install ${this.appName} ${installFromThirdParty} --base-path ${path} ${workers} -y ${writeLog}`
     logInfo(`Installing ${this.appName} with:`, command)
     try {
       LegendaryLibrary.get().installState(this.appName, true)
       return await execAsync(command, execOptions).then((v) => {
         this.state.status = 'done'
-        this.addDesktopShortcut()
         return v
       })
     } catch (error) {
