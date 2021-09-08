@@ -3,6 +3,11 @@ import { legendaryBin } from '../constants';
 
 
 export default class LegendaryUtils {
+  /**
+   * Checks Legendary Version.
+   *
+   * @returns version: string.
+   */
   public static async checkVersion() {
     const child = spawn(legendaryBin, ['--version'])
     let version = ''

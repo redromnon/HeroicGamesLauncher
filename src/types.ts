@@ -78,6 +78,7 @@ export interface GameInfo {
   namespace: unknown
   save_folder: string
   title: string
+  thirdPartyApp: string
 }
 
 export interface GameStatus {
