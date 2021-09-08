@@ -1,4 +1,7 @@
 .header {
+    z-index: 9;
+    position: sticky;
+    top: 77px;
     display: grid;
     place-self: center;
     place-content: center;
@@ -14,6 +17,7 @@
     line-height: 17px;
     color: var(--text-secondary);
     grid-template-areas: 'filter search total category layout';
+    background-color: var(--background-darker);
 }
 
 .headerSettings {
