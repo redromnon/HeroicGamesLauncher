@@ -1,6 +1,6 @@
 {
     "name": "heroic",
-    "version": "1.9.3",
+    "version": "1.9.4",
     "private": true,
     "main": "public/main.js",
     "homepage": "./",
@@ -26,7 +26,6 @@
         "asarUnpack": [
             "build/icon.png",
             "build/icon.icns",
-            "build/win_icon.ico",
             "build/icon-dark.png",
             "build/icon-light.png"
         ],
@@ -42,7 +41,8 @@
         "win": {
             "icon": "build/win_icon.ico",
             "asarUnpack": [
-                "build/bin/win32/legendary.exe"
+                "build/bin/win32/legendary.exe",
+                "build/win_icon.ico"
             ],
             "files": [
                 "build/bin/win32/*"

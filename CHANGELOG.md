@@ -4,9 +4,11 @@
 
 ### General
 
+- Updated Legendary to version 0.20.9.
 - Added Korean, Croatian and Traditional Chinese languages.
 - Other translations updates and fixes.
 ### Bugfixes
+- Fixed Login not working.
 - Fixed Update game from context menu not working.
 - Fixed Update icon misplaced on game card.
 - Fixed (probably) rare issue that could cause a Heroic to show only a blank screen when trying to load games from cache.
