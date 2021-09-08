@@ -63,6 +63,7 @@ import { listenStdout } from './logger'
 import { logError, logInfo, logWarning } from './logger'
 import Store from 'electron-store'
 import { checkUpdates } from './updater'
+import LegendaryUtils from './legendary/utils'
 
 const { showErrorBox, showMessageBox, showOpenDialog } = dialog
 const isWindows = platform() === 'win32'
@@ -116,6 +117,8 @@ async function createWindow(): Promise<BrowserWindow> {
     },
     width: isDev ? 1800 : 1000
   })
+
+  LegendaryUtils.checkVersion()
 
   setTimeout(() => {
     if (process.platform === 'linux') {
@@ -473,6 +476,8 @@ ipcMain.handle('getGameInfo', async (event, game) => {
 })
 
 ipcMain.handle('getUserInfo', async () => await LegendaryUser.getUserInfo())
+
+ipcMain.handle('getLegendaryVersion', async () => await LegendaryUtils.checkVersion())
 
 // Checks if the user have logged in with Legendary already
 ipcMain.handle('isLoggedIn', async () => await LegendaryUser.isLoggedIn())
