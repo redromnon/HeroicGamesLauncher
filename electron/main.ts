@@ -420,7 +420,7 @@ interface Tools {
 }
 
 ipcMain.handle('callTool', async (event, { tool, wine, prefix, exe }: Tools) => {
-  let wineBin = wine.replace("/proton'", "/dist/bin/wine'")
+  let wineBin = wine.replace("/proton'", "/proton' run'")
   let winePrefix: string = prefix.replace('~', home)
 
   if (wine.includes('proton')) {
@@ -428,9 +428,14 @@ ipcMain.handle('callTool', async (event, { tool, wine, prefix, exe }: Tools) => 
     winePrefix = `${protonPrefix}/pfx`
 
     // workaround for proton since newer versions doesnt come with a wine binary anymore.
-    logInfo(`${wineBin} not found for this Proton version, will try using default wine`)
-    if (!existsSync(wineBin)) {
+    logInfo(`Using default wine for proton`)
+    if (!existsSync(wineBin) || tool === 'winetricks') {
       wineBin = '/usr/bin/wine'
+    }
+
+    if (!existsSync(winePrefix)) {
+      const command = `mkdir '${winePrefix}' -p`
+      await execAsync(command, execOptions)
     }
   }
 
