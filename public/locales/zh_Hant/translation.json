@@ -43,11 +43,10 @@
         "runexe": {
             "title": "選擇要執行的EXE檔案"
         },
-        "select": {
-            "exe": "Select EXE"
-        },
+        "select": "",
         "select-exe": {
-            "placeholder": "Select EXE..."
+            "button": "Select",
+            "title": "Select EXE"
         },
         "sync": {
             "button": "選擇",

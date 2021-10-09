@@ -43,11 +43,10 @@
         "runexe": {
             "title": "ഓടിക്കുവാനുള്ള EXE നല്‍കൂ"
         },
-        "select": {
-            "exe": "Select EXE"
-        },
+        "select": "",
         "select-exe": {
-            "placeholder": "Select EXE..."
+            "button": "Select",
+            "title": "Select EXE"
         },
         "sync": {
             "button": "തിരഞ്ഞെടുക്കൂ",

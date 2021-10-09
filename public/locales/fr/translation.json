@@ -43,11 +43,10 @@
         "runexe": {
             "title": "Sélectionner l'EXE à exécuter"
         },
-        "select": {
-            "exe": "Select EXE"
-        },
+        "select": "",
         "select-exe": {
-            "placeholder": "Select EXE..."
+            "button": "Select",
+            "title": "Select EXE"
         },
         "sync": {
             "button": "Choisir",

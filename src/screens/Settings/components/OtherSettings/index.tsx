@@ -93,7 +93,7 @@ export default function OtherSettings({
             type="text"
             value={targetExe.replaceAll("'", '')}
             className="settingSelect"
-            placeholder={targetExe || t('box.select-exe.placeholder', 'Select EXE...')}
+            placeholder={targetExe || t('box.select-exe.title', 'Select EXE...')}
             onChange={(event) => setTargetExe(event.target.value)}
           />
           {!targetExe.length ? <CreateNewFolder
@@ -101,10 +101,10 @@ export default function OtherSettings({
             className="material-icons settings folder"
             onClick={() =>
               ipcRenderer.invoke('openDialog', {
-                buttonLabel: t('box.select'),
+                buttonLabel: t('box.select-exe.button', 'Select'),
                 filters: [ { extensions: ['exe'], name: 'Binaries' }],
                 properties: ['openFile'],
-                title: t('box.select.exe', 'Select EXE')
+                title: t('box.select-exe.title', 'Select EXE')
               }).then(({ path }: Path) =>
                 setTargetExe(path ? `'${path}'` : targetExe)
               )

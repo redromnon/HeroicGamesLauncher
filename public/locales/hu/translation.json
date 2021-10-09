@@ -43,11 +43,10 @@
         "runexe": {
             "title": "Válasszd ki a futtatni kívánt EXE fájlt"
         },
-        "select": {
-            "exe": "Select EXE"
-        },
+        "select": "",
         "select-exe": {
-            "placeholder": "Select EXE..."
+            "button": "Select",
+            "title": "Select EXE"
         },
         "sync": {
             "button": "Választ",
