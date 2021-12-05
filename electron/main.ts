@@ -22,7 +22,8 @@ import {
   rmdirSync,
   unlinkSync,
   watch,
-  writeFile
+  writeFile,
+  writeFileSync
 } from 'graceful-fs'
 import Backend from 'i18next-fs-backend'
 import i18next from 'i18next'
@@ -99,9 +100,7 @@ async function createWindow(): Promise<BrowserWindow> {
       const date = new Date().toDateString()
       const path = `${app.getPath('crashDumps')}/${date}.txt`
       logInfo('Saving log file to ' + path)
-      writeFile(path, str, {}, (err) => {
-        if (err) throw err
-      })
+      writeFileSync(path, str, {})
     })
     .catch((reason) => {
       throw reason
