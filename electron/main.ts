@@ -98,7 +98,7 @@ async function createWindow(): Promise<BrowserWindow> {
     .then((arr) => {
       const str = arr.join('\n')
       const date = new Date().toDateString()
-      const path = `${app.getPath('crashDumps')}/${date}.txt`
+      const path = `${app.getPath('crashDumps')}/${date}.log`
       logInfo('Saving log file to ' + path)
       writeFileSync(path, str, {})
     })
